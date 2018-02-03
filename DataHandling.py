@@ -16,7 +16,7 @@
 ###
 ############################################################################"""
 
-import os
+import os, csv, html5lib
 import numpy as np
 import pandas as pd
 
@@ -27,13 +27,31 @@ class Panda_Files:
         filename, file_extension = os.path.splitext(self)
         self.ftype = file_extension     ### file type from extension 
         
+    def file_delim(self):
+        sniffer = csv.Sniffer()
+        dialect = sniffer.sniff(csv.read(self))
+        return(dialect.delimiter)
+        
     def load_file(self):
         if self.ftype == '.csv' or '.txt' or '.asc':
-          outfile = pd.read_csv(self,sep=delim)
+            delim = self.file_delim()
+            outfile = pd.read_csv(self,sep=delim)
         elif self.ftype == '.xls' or '.xlsx':
-          outfile = pd.ExcelFile(self)
+            outfile = pd.ExcelFile(self)
         elif self.type == '.json':
-          outfile = pd.read_json(self) 
+            outfile = pd.read_json(self) 
         else:
-          print('not recognised file type')
-        return(outfile)          
+            print('not recognised file type')
+        return(outfile)    
+
+### Web Scrape
+
+class Web_Scrape:
+    def __init__(self):
+        pass
+    
+    def load_page(self):
+        outfile = pd.read_html(self)
+        return(outfile)
+
+      
