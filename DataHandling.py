@@ -20,9 +20,6 @@ import os
 import numpy as np
 import pandas as pd
 
-
-File = 'C:\Syncplicity\UoS Work\Code\UdemyCourse\scriptsLecture\scriptsLecture\section4\Resp2.csv'
-
 ### Pandas Handling
 
 class Panda_Files:
@@ -39,8 +36,4 @@ class Panda_Files:
           outfile = pd.read_json(self) 
         else:
           print('not recognised file type')
-        return(outfile)
-      
-          
-          
-                
+        return(outfile)          
