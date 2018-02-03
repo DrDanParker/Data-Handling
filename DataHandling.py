@@ -44,7 +44,7 @@ class Panda_Files:
             print('not recognised file type')
         return(outfile)    
 
-### Web Scrape
+### Panda Scrape
 
 class Web_Scrape:
     def __init__(self):
