@@ -54,4 +54,9 @@ class Web_Scrape:
         outfile = pd.read_html(self)
         return(outfile)
 
+    def load_json(self):
+        outfile = pd.read_json(self)
+        return(outfile)
+        
+
       
