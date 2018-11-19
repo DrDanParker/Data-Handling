@@ -20,6 +20,28 @@ import os, csv, html5lib
 import numpy as np
 import pandas as pd
 
+### File List Managers
+
+def grp_by_prefix(filelist,seperator='_'):
+    ### Groups a list of files based on common prefix
+    # find unique prefixes
+    pref = []
+    used = set()
+    for file in filelist:
+        pref.append(os.path.basename(file).split(seperator)[0])
+    unique = [x for x in pref if x not in used and (used.add(x) or True)]
+    # group files based on prefix
+    groups = []    
+    for i in range(0,len(unique)):
+        grp = []
+        for j in range(0,len(pref)):
+            if pref[j] == unique[i]:
+                grp.append(filelist[j])
+        groups.append(grp)
+    return(groups)
+
+
+
 ### Pandas Handling
 
 class Panda_Files:
